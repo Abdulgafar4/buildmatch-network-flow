@@ -62,12 +62,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				'sifter-navy': 'hsl(var(--sifter-navy))',
-				'sifter-charcoal': 'hsl(var(--sifter-charcoal))',
-				'sifter-silver': 'hsl(var(--sifter-silver))',
-				'sifter-silver-light': 'hsl(var(--sifter-silver-light))',
-				'sifter-gray': 'hsl(var(--sifter-gray))',
-				'sifter-gray-dark': 'hsl(var(--sifter-gray-dark))'
+				'construction-navy': 'hsl(var(--construction-navy))',
+				'construction-charcoal': 'hsl(var(--construction-charcoal))',
+				'construction-orange': 'hsl(var(--construction-orange))',
+				'construction-orange-light': 'hsl(var(--construction-orange-light))',
+				'construction-gray': 'hsl(var(--construction-gray))',
+				'construction-gray-dark': 'hsl(var(--construction-gray-dark))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -48,14 +48,14 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section id="why-us" className="py-20 bg-gradient-to-b from-sifter-gray to-white">
+    <section id="why-us" className="py-20 bg-gradient-to-b from-construction-gray to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-sifter-navy mb-4">
-            Why Choose Sifter?
+          <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
+            Why Choose BuildMatch?
           </h2>
-          <p className="text-xl text-sifter-gray-dark max-w-3xl mx-auto">
+          <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
             We're not just another platform. We're built specifically for the construction industry, 
             with features and safeguards that matter to professionals like you.
           </p>
@@ -168,8 +168,8 @@ const WhyUsSection = () => {
 
         {/* Comparison Section */}
         <div className="bg-white rounded-2xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-sifter-navy mb-8 text-center">
-            Sifter vs. Traditional Methods
+          <h3 className="text-2xl font-bold text-construction-navy mb-8 text-center">
+            BuildMatch vs. Traditional Methods
           </h3>
           
           <div className="overflow-x-auto">

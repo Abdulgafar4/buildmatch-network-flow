@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Sifter Construction Network Design System */
+/* BuildMatch Construction Network Design System */
 
 @layer base {
   :root {
@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 17%;
 
-    /* Navy primary with modern silver accent */
+    /* Navy primary with construction orange accent */
     --primary: 215 28% 17%;
     --primary-foreground: 0 0% 98%;
 
@@ -25,8 +25,8 @@
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    /* Modern silver accent */
-    --accent: 210 8% 75%;
+    /* Construction orange accent */
+    --accent: 22 92% 50%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -34,29 +34,28 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 210 8% 75%;
+    --ring: 22 92% 50%;
 
     --radius: 0.75rem;
 
-    /* Sifter theme colors */
-    --sifter-navy: 215 28% 17%;
-    --sifter-charcoal: 220 13% 18%;
-    --sifter-silver: 210 8% 75%;
-    --sifter-silver-light: 210 12% 85%;
-    --sifter-gray: 210 40% 96%;
-    --sifter-gray-dark: 215 16% 47%;
+    /* Construction theme colors */
+    --construction-navy: 215 28% 17%;
+    --construction-charcoal: 220 13% 18%;
+    --construction-orange: 22 92% 50%;
+    --construction-orange-light: 24 95% 53%;
+    --construction-gray: 210 40% 96%;
+    --construction-gray-dark: 215 16% 47%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--sifter-navy)), hsl(var(--sifter-charcoal)));
-    --gradient-silver: linear-gradient(135deg, hsl(var(--sifter-silver)), hsl(var(--sifter-silver-light)));
-    --gradient-metallic: linear-gradient(45deg, hsl(210 8% 75%), hsl(210 12% 85%), hsl(210 8% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--construction-navy)), hsl(var(--construction-charcoal)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--construction-orange)), hsl(var(--construction-orange-light)));
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 98%));
 
     /* Shadows */
     --shadow-soft: 0 1px 3px 0 hsl(215 28% 17% / 0.1), 0 1px 2px -1px hsl(215 28% 17% / 0.1);
     --shadow-medium: 0 4px 6px -1px hsl(215 28% 17% / 0.1), 0 2px 4px -2px hsl(215 28% 17% / 0.1);
     --shadow-large: 0 10px 15px -3px hsl(215 28% 17% / 0.1), 0 4px 6px -4px hsl(215 28% 17% / 0.1);
-    --shadow-glow: 0 0 20px hsl(var(--sifter-silver) / 0.3);
+    --shadow-glow: 0 0 20px hsl(var(--construction-orange) / 0.3);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -98,7 +97,7 @@
     --muted: 220 13% 18%;
     --muted-foreground: 215 16% 65%;
 
-    --accent: 210 8% 75%;
+    --accent: 22 92% 50%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -106,7 +105,7 @@
 
     --border: 220 13% 18%;
     --input: 220 13% 18%;
-    --ring: 210 8% 75%;
+    --ring: 22 92% 50%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -136,17 +135,16 @@
 @layer components {
   /* Hero button variants */
   .btn-hero-primary {
-    @apply bg-sifter-navy text-white hover:bg-sifter-charcoal transition-all duration-300 shadow-medium hover:shadow-large;
+    @apply bg-construction-navy text-white hover:bg-construction-charcoal transition-all duration-300 shadow-medium hover:shadow-large;
   }
   
   .btn-hero-accent {
-    background: var(--gradient-metallic);
-    @apply text-sifter-navy hover:shadow-glow transition-all duration-300 shadow-medium font-semibold;
+    @apply bg-construction-orange text-white hover:bg-construction-orange-light transition-all duration-300 shadow-medium hover:shadow-glow;
   }
 
   /* Animated underlines */
   .link-animated {
-    @apply relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-sifter-silver after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+    @apply relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-construction-orange after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
 
   /* Smooth animations */
@@ -160,32 +158,28 @@
 }
 
 @layer utilities {
-  .bg-sifter-navy {
-    background-color: hsl(var(--sifter-navy));
+  .bg-construction-navy {
+    background-color: hsl(var(--construction-navy));
   }
   
-  .bg-sifter-charcoal {
-    background-color: hsl(var(--sifter-charcoal));
+  .bg-construction-charcoal {
+    background-color: hsl(var(--construction-charcoal));
   }
   
-  .bg-sifter-silver {
-    background-color: hsl(var(--sifter-silver));
+  .bg-construction-orange {
+    background-color: hsl(var(--construction-orange));
   }
   
-  .bg-sifter-silver-light {
-    background-color: hsl(var(--sifter-silver-light));
+  .bg-construction-orange-light {
+    background-color: hsl(var(--construction-orange-light));
   }
   
-  .text-sifter-navy {
-    color: hsl(var(--sifter-navy));
+  .text-construction-navy {
+    color: hsl(var(--construction-navy));
   }
   
-  .text-sifter-silver {
-    color: hsl(var(--sifter-silver));
-  }
-
-  .bg-gradient-metallic {
-    background: var(--gradient-metallic);
+  .text-construction-orange {
+    color: hsl(var(--construction-orange));
   }
 
   .shadow-glow {
