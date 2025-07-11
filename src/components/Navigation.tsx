@@ -35,8 +35,8 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <span className="text-2xl font-bold text-construction-navy">
-                BuildMatch
+              <span className="text-2xl font-bold text-sifter-navy">
+                Sift<span className="text-sifter-silver">er</span>
               </span>
             </div>
           </div>
@@ -48,7 +48,7 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-construction-navy hover:text-construction-orange link-animated px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="text-sifter-navy hover:text-sifter-silver link-animated px-3 py-2 text-sm font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </a>
@@ -90,7 +90,7 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-construction-navy hover:text-construction-orange block px-3 py-2 text-base font-medium transition-colors duration-200"
+                  className="text-sifter-navy hover:text-sifter-silver block px-3 py-2 text-base font-medium transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
