@@ -27,16 +27,16 @@ const HeroSection = () => {
 
           {/* Main Tagline */}
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Built to Connect
+            Ontario's Premier
             <br />
-            <span className="text-construction-orange">Builders & Contractors</span>
+            <span className="text-construction-orange">Construction Network</span>
           </h2>
 
           {/* Subtext */}
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Find trusted pros. Join projects. Grow your network.
+            Builders post jobs free. Contractors subscribe to access local opportunities.
             <br />
-            The modern platform connecting construction professionals.
+            Direct quoting. Instant connections. Ontario-focused.
           </p>
 
           {/* CTA Buttons */}
@@ -46,7 +46,7 @@ const HeroSection = () => {
               size="xl"
               className="group min-w-[200px]"
             >
-              Find Contractors
+              Post Job (Free)
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
@@ -54,7 +54,7 @@ const HeroSection = () => {
               size="xl"
               className="min-w-[200px]"
             >
-              Join the Network
+              Find Work ($150/mo)
             </Button>
           </div>
 

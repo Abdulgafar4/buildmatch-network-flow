@@ -6,21 +6,21 @@ const HowItWorksSection = () => {
       number: "01",
       icon: UserCheck,
       title: "Sign Up & Verify",
-      description: "Create your profile and get verified with our streamlined process. Background checks and insurance verification included.",
+      description: "Create your profile and get verified. Builders post jobs for free. Contractors choose local ($150/mo) or premium ($250/mo) for province-wide access.",
       color: "bg-construction-orange"
     },
     {
       number: "02", 
       icon: Search,
-      title: "Browse Jobs or Contractors",
-      description: "Search for projects that match your skills or find qualified contractors for your next build. Advanced filtering makes it easy.",
+      title: "Browse & Quote",
+      description: "Contractors see jobs in their city and submit quotes directly. Builders compare quotes and select the best contractor for their project.",
       color: "bg-construction-navy"
     },
     {
       number: "03",
       icon: Handshake,
       title: "Connect & Build",
-      description: "Direct messaging, project collaboration tools, and secure payment processing. Focus on what you do best.",
+      description: "Start chatting with your selected contractor or chosen builder. Built-in messaging keeps projects on track from quote to completion.",
       color: "bg-construction-orange"
     }
   ];
@@ -34,8 +34,8 @@ const HowItWorksSection = () => {
             How It Works
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            Get connected in three simple steps. Whether you're a contractor looking for work 
-            or a builder seeking skilled professionals, we've streamlined the process.
+            Connecting Ontario's construction professionals in three simple steps. 
+            Whether you're posting jobs or finding work, Sifter makes it easy.
           </p>
         </div>
 
@@ -82,14 +82,14 @@ const HowItWorksSection = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-lg text-construction-gray-dark mb-6">
-            Ready to get started? It takes less than 5 minutes to set up your profile.
+            Ready to get started? Join Ontario's fastest-growing construction network.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="bg-construction-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-construction-charcoal transition-colors duration-200">
-              Start as Contractor
+              I'm a Builder (Free)
             </button>
             <button className="bg-construction-orange text-white px-8 py-3 rounded-lg font-semibold hover:bg-construction-orange-light transition-colors duration-200">
-              Start as Builder
+              I'm a Contractor ($150/mo)
             </button>
           </div>
         </div>

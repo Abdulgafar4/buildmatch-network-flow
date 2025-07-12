@@ -17,9 +17,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: "How It Works", href: "#how-it-works" },
-    { name: "Find Contractors", href: "#contractors" },
-    { name: "Browse Jobs", href: "#jobs" },
-    { name: "About", href: "#about" },
+    { name: "For Builders", href: "#builders" },
+    { name: "For Contractors", href: "#contractors" },
+    { name: "Pricing", href: "#pricing" },
   ];
 
   return (

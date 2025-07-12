@@ -5,45 +5,45 @@ const WhyUsSection = () => {
   const reasons = [
     {
       icon: Shield,
-      title: "Verified & Trusted",
-      description: "Every contractor undergoes background checks, license verification, and insurance validation",
-      stat: "100%",
-      statLabel: "Verified Professionals"
+      title: "Ontario-Focused",
+      description: "Built exclusively for Ontario's construction market. Local regulations, practices, and industry knowledge baked in.",
+      stat: "ON Only",
+      statLabel: "Regional Focus"
     },
     {
       icon: Clock,
-      title: "Save Time",
-      description: "Find qualified contractors in hours, not weeks. Our smart matching reduces your search time by 90%",
-      stat: "90%",
-      statLabel: "Faster Hiring"
+      title: "Quality Control",
+      description: "Max 5 contractors per city ensures quality. Others join a waitlist, maintaining high standards and reducing competition.",
+      stat: "5 Max",
+      statLabel: "Per City Limit"
     },
     {
       icon: DollarSign,
-      title: "Better Pricing",
-      description: "Competitive bidding and transparent pricing. Compare quotes and negotiate directly with contractors",
-      stat: "25%",
-      statLabel: "Average Savings"
+      title: "Fair Pricing Model",
+      description: "Builders post for free. Contractors pay $150/month for local access or $250/month for province-wide opportunities.",
+      stat: "$150",
+      statLabel: "Local Access"
     },
     {
       icon: Users,
-      title: "Quality Network", 
-      description: "Access to the largest network of skilled construction professionals in your area",
-      stat: "15K+",
-      statLabel: "Active Contractors"
+      title: "Direct Connection", 
+      description: "No middleman fees or complex processes. Quote directly, chat immediately, and start building relationships.",
+      stat: "0%",
+      statLabel: "Platform Fees"
     },
     {
       icon: CheckCircle,
-      title: "Project Success",
-      description: "Higher project completion rates with built-in project management and communication tools",
-      stat: "98%",
-      statLabel: "Success Rate"
+      title: "Smart Matching",
+      description: "Only contractors from the same city see local jobs unless they upgrade to premium for broader access.",
+      stat: "City-Based",
+      statLabel: "Job Visibility"
     },
     {
       icon: Zap,
-      title: "Instant Connect",
-      description: "Real-time messaging, instant notifications, and 24/7 platform availability",
-      stat: "24/7",
-      statLabel: "Platform Uptime"
+      title: "Built-in Messaging",
+      description: "Integrated chat system keeps builders and contractors connected throughout the entire project lifecycle.",
+      stat: "Real-time",
+      statLabel: "Communication"
     }
   ];
 
@@ -53,11 +53,11 @@ const WhyUsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
-            Why Choose BuildMatch?
+            Why Choose Sifter?
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            We're not just another platform. We're built specifically for the construction industry, 
-            with features and safeguards that matter to professionals like you.
+            Built specifically for Ontario contractors and builders. Local focus, 
+            quality control, and features that matter to construction professionals.
           </p>
         </div>
 
@@ -96,14 +96,14 @@ const WhyUsSection = () => {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-construction-navy mb-2">Industry-First Verification</h3>
+                  <h3 className="text-xl font-semibold text-construction-navy mb-2">Local Expertise</h3>
                   <p className="text-construction-gray-dark mb-3">
-                    Our 3-tier verification process includes license validation, insurance checks, 
-                    and background screening - going beyond what generic platforms offer.
+                    Ontario-specific regulations, local building codes, and regional contractor networks. 
+                    We understand the unique needs of Ontario's construction industry.
                   </p>
                   <div className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span className="text-sm font-medium text-construction-navy">100% Verified Network</span>
+                    <span className="text-sm font-medium text-construction-navy">Ontario-Focused Platform</span>
                   </div>
                 </div>
               </div>
@@ -115,14 +115,14 @@ const WhyUsSection = () => {
                   <Zap className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-construction-navy mb-2">Smart Matching Technology</h3>
+                  <h3 className="text-xl font-semibold text-construction-navy mb-2">Quality Control System</h3>
                   <p className="text-construction-gray-dark mb-3">
-                    AI-powered matching considers project specifics, contractor expertise, 
-                    location, and availability for perfect project-contractor alignment.
+                    Maximum 5 contractors per city with waitlist management ensures quality over quantity. 
+                    Every contractor earns their spot and maintains high standards.
                   </p>
                   <div className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span className="text-sm font-medium text-construction-navy">90% Faster Hiring Process</span>
+                    <span className="text-sm font-medium text-construction-navy">5 Contractors Max Per City</span>
                   </div>
                 </div>
               </div>
@@ -169,7 +169,7 @@ const WhyUsSection = () => {
         {/* Comparison Section */}
         <div className="bg-white rounded-2xl p-8 shadow-xl">
           <h3 className="text-2xl font-bold text-construction-navy mb-8 text-center">
-            BuildMatch vs. Traditional Methods
+            Sifter vs. Traditional Methods
           </h3>
           
           <div className="overflow-x-auto">
@@ -177,7 +177,7 @@ const WhyUsSection = () => {
               <thead>
                 <tr className="border-b border-gray-200">
                   <th className="text-left py-4 px-4 font-semibold text-construction-navy">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold text-construction-orange">BuildMatch</th>
+                  <th className="text-center py-4 px-4 font-semibold text-construction-orange">Sifter</th>
                   <th className="text-center py-4 px-4 font-semibold text-construction-gray-dark">Traditional Methods</th>
                 </tr>
               </thead>

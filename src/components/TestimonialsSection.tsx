@@ -10,9 +10,9 @@ const TestimonialsSection = () => {
       company: "Metro Construction Co.",
       image: "/api/placeholder/80/80",
       rating: 5,
-      quote: "BuildMatch transformed how we find contractors. We used to spend weeks vetting electricians for our commercial projects. Now we can find verified, top-rated pros in hours. The quality of contractors on the platform is exceptional, and the background verification gives us complete confidence.",
-      project: "Downtown Office Complex - $2.3M project",
-      results: "Found qualified electrical contractor in 2 days, project completed 1 week ahead of schedule"
+      quote: "Sifter transformed how we find contractors in Ontario. The local focus means we get contractors who understand our regional requirements and building codes. The quality control with only 5 contractors per city ensures we're working with the best.",
+      project: "Mississauga Commercial Complex - $1.8M project",
+      results: "Found local electrical contractor in same day, project completed on schedule with Ontario code compliance"
     },
     {
       type: "contractor", 
@@ -21,9 +21,9 @@ const TestimonialsSection = () => {
       company: "Rodriguez Electrical Services",
       image: "/api/placeholder/80/80",
       rating: 5,
-      quote: "As a small electrical contractor, finding consistent, quality work was always a challenge. BuildMatch connected me with builders who actually value skilled craftwork. I've grown my team from 3 to 12 people in just 18 months, and I'm booked solid for the next 6 months.",
-      project: "150+ projects completed through platform",
-      results: "Revenue increased 340%, expanded team from 3 to 12 employees"
+      quote: "As a Toronto-based plumber, Sifter's local focus was exactly what I needed. The $150/month local subscription pays for itself with just one job. Being one of only 5 contractors in my city means less competition and better quality projects.",
+      project: "80+ local projects completed through platform",
+      results: "Steady local work, 90% project completion rate, expanded from solo to 4-person team"
     }
   ];
 
@@ -36,7 +36,7 @@ const TestimonialsSection = () => {
             Success Stories
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            See how builders and contractors are growing their businesses with BuildMatch
+            See how Ontario builders and contractors are growing their businesses with Sifter
           </p>
         </div>
 
@@ -119,25 +119,25 @@ const TestimonialsSection = () => {
         {/* Stats Section */}
         <div className="mt-20 bg-gradient-to-r from-construction-navy to-construction-charcoal rounded-2xl p-8 md:p-12 text-white">
           <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold mb-4">Join Thousands of Satisfied Users</h3>
-            <p className="text-xl opacity-90">BuildMatch connects the construction industry, one project at a time</p>
+            <h3 className="text-3xl font-bold mb-4">Join Ontario's Construction Network</h3>
+            <p className="text-xl opacity-90">Sifter connects builders and contractors across Ontario, one project at a time</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-construction-orange mb-2">15K+</div>
+              <div className="text-4xl font-bold text-construction-orange mb-2">25+</div>
+              <div className="text-lg opacity-90">Ontario Cities</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-construction-orange mb-2">125</div>
               <div className="text-lg opacity-90">Active Contractors</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-construction-orange mb-2">8K+</div>
-              <div className="text-lg opacity-90">Completed Projects</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-construction-orange mb-2">4.9★</div>
+              <div className="text-4xl font-bold text-construction-orange mb-2">4.8★</div>
               <div className="text-lg opacity-90">Average Rating</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-construction-orange mb-2">$240M+</div>
+              <div className="text-4xl font-bold text-construction-orange mb-2">$45M+</div>
               <div className="text-lg opacity-90">Project Value</div>
             </div>
           </div>
@@ -149,7 +149,7 @@ const TestimonialsSection = () => {
             Ready to Share Your Success Story?
           </h3>
           <p className="text-construction-gray-dark mb-6">
-            Join the thousands of professionals already growing their business with BuildMatch
+            Join the hundreds of Ontario professionals already growing their business with Sifter
           </p>
           <button className="bg-construction-orange text-white px-8 py-3 rounded-lg font-semibold hover:bg-construction-orange-light transition-colors duration-200">
             Get Started Today
