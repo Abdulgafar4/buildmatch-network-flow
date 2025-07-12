@@ -16,12 +16,12 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="animate-fade-up">
           {/* Logo/Brand */}
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
-              Build<span className="text-construction-orange">Match</span>
+              <span className="text-construction-orange">Sifter</span>
             </h1>
           </div>
 

@@ -26,7 +26,7 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
           : "bg-transparent"
       }`}
     >
@@ -36,7 +36,7 @@ const Navigation = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <span className="text-2xl font-bold text-construction-navy">
-                BuildMatch
+                Sifter
               </span>
             </div>
           </div>
@@ -58,11 +58,11 @@ const Navigation = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
-              Sign In
+            <Button variant="ghost" size="sm" className="text-construction-navy hover:text-construction-orange">
+              Login
             </Button>
             <Button variant="accent" size="sm">
-              Get Started Free
+              Sign Up
             </Button>
           </div>
 
@@ -97,11 +97,11 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-gray-200 space-y-2">
-                <Button variant="ghost" size="sm" className="w-full">
-                  Sign In
+                <Button variant="ghost" size="sm" className="w-full text-construction-navy hover:text-construction-orange">
+                  Login
                 </Button>
                 <Button variant="accent" size="sm" className="w-full">
-                  Get Started Free
+                  Sign Up
                 </Button>
               </div>
             </div>
