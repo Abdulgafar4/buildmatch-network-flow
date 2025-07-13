@@ -38,25 +38,29 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 min-h-screen">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 min-h-screen animate-fade-in">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 backdrop-blur-md transition-all duration-500"
         onClick={onClose}
       />
       
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in transform transition-all duration-300 hover:shadow-3xl">
         {/* Header */}
-        <div className="relative bg-gradient-to-r from-construction-navy to-construction-charcoal p-6 text-white">
+        <div className="relative bg-gradient-to-br from-construction-navy via-construction-charcoal to-slate-800 p-8 text-white overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-construction-orange/10 rounded-full -translate-y-16 translate-x-16 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12 animate-pulse delay-1000"></div>
+          
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="absolute top-6 right-6 p-2.5 hover:bg-white/20 rounded-xl transition-all duration-300 hover:rotate-90 hover:scale-110 group"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5 transition-transform duration-300 group-hover:rotate-180" />
           </button>
           
-          <div className="text-center">
+          <div className="text-center relative z-10">
             <h2 className="text-2xl font-bold mb-2">
               <SplitText 
                 text={
@@ -86,14 +90,14 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
         {/* User Type Selector - Only show for login and signup */}
         {authMode !== "forgot-password" && (
-          <div className="p-6 border-b border-gray-100">
-            <div className="flex bg-gray-100 rounded-xl p-1">
+          <div className="p-6 border-b border-gray-100/50">
+            <div className="flex bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-1.5 shadow-inner">
               <button
                 onClick={() => handleUserTypeSwitch("builder")}
-                className={`flex-1 flex items-center justify-center py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+                className={`flex-1 flex items-center justify-center py-3.5 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
                   userType === "builder"
-                    ? "bg-white text-construction-navy shadow-sm"
-                    : "text-gray-600 hover:text-construction-navy"
+                    ? "bg-white text-construction-navy shadow-lg shadow-construction-navy/10 transform scale-105"
+                    : "text-gray-600 hover:text-construction-navy hover:bg-white/50"
                 }`}
               >
                 <Building2 className="h-4 w-4 mr-2" />
@@ -101,10 +105,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               </button>
               <button
                 onClick={() => handleUserTypeSwitch("contractor")}
-                className={`flex-1 flex items-center justify-center py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+                className={`flex-1 flex items-center justify-center py-3.5 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
                   userType === "contractor"
-                    ? "bg-white text-construction-navy shadow-sm"
-                    : "text-gray-600 hover:text-construction-navy"
+                    ? "bg-white text-construction-navy shadow-lg shadow-construction-navy/10 transform scale-105"
+                    : "text-gray-600 hover:text-construction-navy hover:bg-white/50"
                 }`}
               >
                 <Wrench className="h-4 w-4 mr-2" />
@@ -112,10 +116,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               </button>
               <button
                 onClick={() => handleUserTypeSwitch("admin")}
-                className={`flex-1 flex items-center justify-center py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+                className={`flex-1 flex items-center justify-center py-3.5 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
                   userType === "admin"
-                    ? "bg-white text-red-600 shadow-sm"
-                    : "text-gray-600 hover:text-red-600"
+                    ? "bg-white text-red-600 shadow-lg shadow-red-500/10 transform scale-105"
+                    : "text-gray-600 hover:text-red-600 hover:bg-white/50"
                 }`}
               >
                 <Shield className="h-4 w-4 mr-2" />
@@ -128,23 +132,23 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         {/* Auth Mode Tabs - Only show for login and signup */}
         {authMode !== "forgot-password" && (
           <div className="px-6 pt-4">
-            <div className="flex bg-gray-50 rounded-lg p-1">
+            <div className="flex bg-gray-50 rounded-xl p-1.5 shadow-inner">
               <button
                 onClick={() => handleModeSwitch("login")}
-                className={`flex-1 py-2 px-4 rounded-md font-medium transition-all duration-300 ${
+                className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 ${
                   authMode === "login"
-                    ? "bg-white text-construction-navy shadow-sm"
-                    : "text-gray-600 hover:text-construction-navy"
+                    ? "bg-white text-construction-navy shadow-md transform scale-105"
+                    : "text-gray-600 hover:text-construction-navy hover:bg-white/50"
                 }`}
               >
                 Login
               </button>
               <button
                 onClick={() => handleModeSwitch("signup")}
-                className={`flex-1 py-2 px-4 rounded-md font-medium transition-all duration-300 ${
+                className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 ${
                   authMode === "signup"
-                    ? "bg-white text-construction-navy shadow-sm"
-                    : "text-gray-600 hover:text-construction-navy"
+                    ? "bg-white text-construction-navy shadow-md transform scale-105"
+                    : "text-gray-600 hover:text-construction-navy hover:bg-white/50"
                 }`}
               >
                 Sign Up
@@ -154,7 +158,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         )}
 
         {/* Form Content */}
-        <div className={`p-6 transition-all duration-300 ${isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'}`}>
+        <div className={`p-6 transition-all duration-500 ${isAnimating ? 'opacity-0 transform scale-95 blur-sm' : 'opacity-100 transform scale-100 blur-0'}`}>
           {authMode === "login" ? (
             <LoginForm userType={userType} onForgotPassword={() => handleModeSwitch("forgot-password")} onClose={onClose} />
           ) : authMode === "signup" ? (
@@ -215,7 +219,7 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
           <input
             type="email"
             placeholder="Enter your email"
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-construction-orange focus:border-transparent transition-all"
+            className="w-full pl-10 pr-4 py-3.5 border border-gray-200 rounded-xl focus:ring-3 focus:ring-construction-orange/30 focus:border-construction-orange focus:scale-105 transition-all duration-300 hover:border-gray-400"
           />
         </div>
       </div>
@@ -229,7 +233,7 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Enter your password"
-            className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-construction-orange focus:border-transparent transition-all"
+            className="w-full pl-10 pr-12 py-3.5 border border-gray-200 rounded-xl focus:ring-3 focus:ring-construction-orange/30 focus:border-construction-orange focus:scale-105 transition-all duration-300 hover:border-gray-400"
           />
           <button
             type="button"
@@ -257,7 +261,7 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
 
       <Button 
         type="submit" 
-        className="w-full bg-construction-orange hover:bg-construction-orange-light py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105"
+        className="w-full bg-gradient-to-r from-construction-orange to-orange-500 hover:from-construction-orange-light hover:to-orange-400 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-construction-orange/30"
       >
         Sign In as {userType === "builder" ? "Builder" : userType === "contractor" ? "Contractor" : "Admin"}
         <ArrowRight className="h-4 w-4 ml-2" />
