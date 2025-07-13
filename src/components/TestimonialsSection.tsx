@@ -1,5 +1,8 @@
 import { Star, Quote } from "lucide-react";
 import handshakeImage from "@/assets/handshake-construction.jpg";
+import FadeInOnScroll from "@/components/ui/fade-in-on-scroll";
+import StaggeredChildren from "@/components/ui/staggered-children";
+import SplitText from "@/components/ui/split-text";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -31,17 +34,27 @@ const TestimonialsSection = () => {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <FadeInOnScroll className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
-            Success Stories
+            <SplitText 
+              text="Success Stories"
+              animation="slideUp"
+              delay={0.2}
+              stagger={0.05}
+            />
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            See how Ontario builders and contractors are growing their businesses with Sifter
+            <SplitText 
+              text="See how Ontario builders and contractors are growing their businesses with Sifter"
+              animation="fadeIn"
+              delay={0.8}
+              stagger={0.02}
+            />
           </p>
-        </div>
+        </FadeInOnScroll>
 
         {/* Testimonials */}
-        <div className="space-y-16">
+        <StaggeredChildren className="space-y-16" staggerDelay={0.3}>
           {testimonials.map((testimonial, index) => (
             <div key={index} className={`flex flex-col lg:flex-row items-center gap-12 ${
               index % 2 === 1 ? 'lg:flex-row-reverse' : ''
@@ -114,7 +127,7 @@ const TestimonialsSection = () => {
               </div>
             </div>
           ))}
-        </div>
+        </StaggeredChildren>
 
         {/* Stats Section */}
         <div className="mt-20 bg-gradient-to-r from-construction-navy to-construction-charcoal rounded-2xl p-8 md:p-12 text-white">

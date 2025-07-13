@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Search, Filter, MapPin, Calendar, Shield, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import FadeInOnScroll from "@/components/ui/fade-in-on-scroll";
+import StaggeredChildren from "@/components/ui/staggered-children";
+import SplitText from "@/components/ui/split-text";
 
 const SearchFilterSection = () => {
   const [selectedTrade, setSelectedTrade] = useState("All");
@@ -44,21 +47,30 @@ const SearchFilterSection = () => {
   ];
 
   return (
-    <section id="search-filter" className="py-20 bg-gradient-to-b from-white to-construction-gray">
+    <section id="search-filter" className="py-20 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <FadeInOnScroll className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
-            Find the Perfect Match
+            <SplitText 
+              text="Find the Perfect Match"
+              animation="slideUp"
+              delay={0.2}
+              stagger={0.05}
+            />
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            Our advanced search and filtering system helps you find exactly what you need. 
-            Filter by trade, location, availability, certifications, and more.
+            <SplitText 
+              text="Our advanced search and filtering system helps you find exactly what you need. Filter by trade, location, availability, certifications, and more."
+              animation="fadeIn"
+              delay={0.8}
+              stagger={0.02}
+            />
           </p>
-        </div>
+        </FadeInOnScroll>
 
         {/* Search Interface */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
+        <FadeInOnScroll delay={0.3} className="bg-white rounded-2xl shadow-xl p-8 mb-12">
           {/* Search Bar */}
           <div className="relative mb-6">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-construction-gray-dark" />
@@ -129,15 +141,15 @@ const SearchFilterSection = () => {
             <Filter className="mr-2 h-5 w-5" />
             Search Contractors
           </Button>
-        </div>
+        </FadeInOnScroll>
 
         {/* Sample Results */}
-        <div>
+        <FadeInOnScroll delay={0.5}>
           <h3 className="text-2xl font-bold text-construction-navy mb-6">
             Search Results ({mockResults.length})
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggeredChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.1}>
             {mockResults.map((contractor, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-200">
                 {/* Header */}
@@ -192,8 +204,8 @@ const SearchFilterSection = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
+          </StaggeredChildren>
+        </FadeInOnScroll>
 
         {/* Feature Highlights */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">

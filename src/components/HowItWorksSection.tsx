@@ -1,4 +1,7 @@
 import { UserCheck, Search, Handshake } from "lucide-react";
+import FadeInOnScroll from "@/components/ui/fade-in-on-scroll";
+import StaggeredChildren from "@/components/ui/staggered-children";
+import SplitText from "@/components/ui/split-text";
 
 const HowItWorksSection = () => {
   const steps = [
@@ -26,21 +29,30 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-construction-gray">
+    <section id="how-it-works" className="py-20 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <FadeInOnScroll className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
-            How It Works
+            <SplitText 
+              text="How It Works"
+              animation="slideUp"
+              delay={0.2}
+              stagger={0.05}
+            />
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            Connecting Ontario's construction professionals in three simple steps. 
-            Whether you're posting jobs or finding work, Sifter makes it easy.
+            <SplitText 
+              text="Connecting Ontario's construction professionals in three simple steps. Whether you're posting jobs or finding work, Sifter makes it easy."
+              animation="fadeIn"
+              delay={0.8}
+              stagger={0.02}
+            />
           </p>
-        </div>
+        </FadeInOnScroll>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggeredChildren className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.2}>
           {steps.map((step, index) => (
             <div
               key={step.number}
@@ -77,7 +89,7 @@ const HowItWorksSection = () => {
               </div>
             </div>
           ))}
-        </div>
+        </StaggeredChildren>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">

@@ -1,5 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, DollarSign, Clock, CheckCircle } from "lucide-react";
+import FadeInOnScroll from "@/components/ui/fade-in-on-scroll";
+import StaggeredChildren from "@/components/ui/staggered-children";
+import SplitText from "@/components/ui/split-text";
 
 const ProjectBoardSection = () => {
   const projects = [
@@ -87,14 +90,24 @@ const ProjectBoardSection = () => {
     <section id="project-board" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <FadeInOnScroll className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
-            See It In Action
+            <SplitText 
+              text="See It In Action"
+              animation="slideUp"
+              delay={0.2}
+              stagger={0.05}
+            />
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            Browse active projects and top contractors. This is what our platform looks like in real-time.
+            <SplitText 
+              text="Browse active projects and top contractors. This is what our platform looks like in real-time."
+              animation="fadeIn"
+              delay={0.8}
+              stagger={0.02}
+            />
           </p>
-        </div>
+        </FadeInOnScroll>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Active Projects */}

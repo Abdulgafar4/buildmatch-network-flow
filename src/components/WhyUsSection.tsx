@@ -1,5 +1,10 @@
 import { Shield, Clock, DollarSign, Users, CheckCircle, Zap } from "lucide-react";
 import toolsImage from "@/assets/tools-construction.jpg";
+import FadeInOnScroll from "@/components/ui/fade-in-on-scroll";
+import StaggeredChildren from "@/components/ui/staggered-children";
+import SplitText from "@/components/ui/split-text";
+import ScrollTrigger from "@/components/ui/scroll-trigger";
+import ScrollReveal from "@/components/ui/scroll-reveal";
 
 const WhyUsSection = () => {
   const reasons = [
@@ -48,48 +53,60 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section id="why-us" className="py-20 bg-gradient-to-b from-construction-gray to-white">
+    <section id="why-us" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <FadeInOnScroll className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
-            Why Choose Sifter?
+            <SplitText 
+              text="Why Choose Sifter?"
+              animation="slideUp"
+              delay={0.2}
+              stagger={0.05}
+            />
           </h2>
           <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
-            Built specifically for Ontario contractors and builders. Local focus, 
-            quality control, and features that matter to construction professionals.
+            <SplitText 
+              text="Built specifically for Ontario contractors and builders. Local focus, quality control, and features that matter to construction professionals."
+              animation="fadeIn"
+              delay={0.8}
+              stagger={0.02}
+            />
           </p>
-        </div>
+        </FadeInOnScroll>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Left Side - Image */}
-          <div className="relative">
-            <img
-              src={toolsImage}
-              alt="Professional construction tools"
-              className="w-full h-96 object-cover rounded-2xl shadow-xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-construction-navy/20 to-transparent rounded-2xl"></div>
-            
-            {/* Floating Stats */}
-            <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-xl">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-construction-orange mb-1">4.9★</div>
-                <div className="text-sm text-construction-gray-dark">Platform Rating</div>
+          <FadeInOnScroll direction="left" delay={0.3}>
+            <div className="relative">
+              <img
+                src={toolsImage}
+                alt="Professional construction tools"
+                className="w-full h-96 object-cover rounded-2xl shadow-xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-construction-navy/20 to-transparent rounded-2xl"></div>
+              
+              {/* Floating Stats */}
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-xl z-10">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-construction-orange mb-1">4.9★</div>
+                  <div className="text-sm text-construction-gray-dark">Platform Rating</div>
+                </div>
+              </div>
+              
+              <div className="absolute -top-6 -left-6 bg-construction-orange rounded-xl p-4 shadow-xl z-10">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white mb-1">$240M+</div>
+                  <div className="text-xs text-white/90">Projects Completed</div>
+                </div>
               </div>
             </div>
-            
-            <div className="absolute -top-6 -left-6 bg-construction-orange rounded-xl p-4 shadow-xl">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white mb-1">$240M+</div>
-                <div className="text-xs text-white/90">Projects Completed</div>
-              </div>
-            </div>
-          </div>
+          </FadeInOnScroll>
 
           {/* Right Side - Features */}
-          <div className="space-y-8">
+          <FadeInOnScroll direction="right" delay={0.5}>
+            <StaggeredChildren className="space-y-8" staggerDelay={0.2}>
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
               <div className="flex items-start space-x-4">
                 <div className="bg-construction-orange w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -146,11 +163,18 @@ const WhyUsSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+            </StaggeredChildren>
+          </FadeInOnScroll>
         </div>
 
         {/* Reasons Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <ScrollTrigger 
+          triggerOn="enter" 
+          direction="both" 
+          animation="scale" 
+          intensity={1.5}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+        >
           {reasons.map((reason, index) => (
             <div key={index} className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-200">
               <div className="bg-construction-orange w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -164,10 +188,16 @@ const WhyUsSection = () => {
               </div>
             </div>
           ))}
-        </div>
+        </ScrollTrigger>
 
         {/* Comparison Section */}
-        <div className="bg-white rounded-2xl p-8 shadow-xl">
+        <ScrollReveal 
+          revealType="slide" 
+          direction="up" 
+          delay={200} 
+          duration={1000}
+          className="bg-white rounded-2xl p-8 shadow-xl"
+        >
           <h3 className="text-2xl font-bold text-construction-navy mb-8 text-center">
             Sifter vs. Traditional Methods
           </h3>
@@ -205,7 +235,7 @@ const WhyUsSection = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
