@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { X, Eye, EyeOff, ArrowRight, ArrowLeft, Building2, Wrench, Mail, Lock, User, Phone, MapPin, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SplitText from "@/components/ui/split-text";
+import { useAuth, UserRole } from "@/contexts/AuthContext";
+import { toast } from "@/hooks/use-toast";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -209,10 +212,48 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 // Login Form Component
 const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; onClose: () => void }> = ({ userType, onForgotPassword, onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onClose();
+    setIsSubmitting(true);
+
+    try {
+      if (!formData.email || !formData.password) {
+        toast({
+          title: "Error",
+          description: "Please fill in all required fields.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      login(formData.email, formData.password, userType as UserRole);
+      
+      toast({
+        title: "Success",
+        description: "Successfully logged in!"
+      });
+
+      const dashboardPath = `/dashboard/${userType}`;
+      navigate(dashboardPath);
+      onClose();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -226,6 +267,8 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
           <input
             type="email"
             placeholder="Enter your email"
+            value={formData.email}
+            onChange={(e) => setFormData({...formData, email: e.target.value})}
             className="w-full pl-10 pr-4 py-3.5 border border-gray-200 rounded-xl focus:ring-3 focus:ring-construction-orange/30 focus:border-construction-orange focus:scale-105 transition-all duration-300 hover:border-gray-400"
           />
         </div>
@@ -240,6 +283,8 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Enter your password"
+            value={formData.password}
+            onChange={(e) => setFormData({...formData, password: e.target.value})}
             className="w-full pl-10 pr-12 py-3.5 border border-gray-200 rounded-xl focus:ring-3 focus:ring-construction-orange/30 focus:border-construction-orange focus:scale-105 transition-all duration-300 hover:border-gray-400"
           />
           <button
@@ -268,10 +313,11 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
 
       <Button 
         type="submit" 
-        className="w-full bg-gradient-to-r from-construction-orange to-orange-500 hover:from-construction-orange-light hover:to-orange-400 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-construction-orange/30"
+        disabled={isSubmitting}
+        className="w-full bg-gradient-to-r from-construction-orange to-orange-500 hover:from-construction-orange-light hover:to-orange-400 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-construction-orange/30 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Sign In as {userType === "builder" ? "Builder" : userType === "contractor" ? "Contractor" : "Admin"}
-        <ArrowRight className="h-4 w-4 ml-2" />
+        {isSubmitting ? "Signing In..." : `Sign In as ${userType === "builder" ? "Builder" : userType === "contractor" ? "Contractor" : "Admin"}`}
+        {!isSubmitting && <ArrowRight className="h-4 w-4 ml-2" />}
       </Button>
     </form>
   );
@@ -281,10 +327,63 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
 const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ userType, onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    location: "",
+    password: "",
+    confirmPassword: ""
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onClose();
+    setIsSubmitting(true);
+
+    try {
+      if (!formData.email || !formData.password || !formData.firstName || !formData.lastName) {
+        toast({
+          title: "Error",
+          description: "Please fill in all required fields.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        toast({
+          title: "Error",
+          description: "Passwords do not match.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      login(formData.email, formData.password, userType as UserRole);
+      
+      toast({
+        title: "Success",
+        description: "Account created successfully!"
+      });
+
+      const dashboardPath = `/dashboard/${userType}`;
+      navigate(dashboardPath);
+      onClose();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -299,6 +398,8 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
             <input
               type="text"
               placeholder="First name"
+              value={formData.firstName}
+              onChange={(e) => setFormData({...formData, firstName: e.target.value})}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-construction-orange focus:border-transparent transition-all"
             />
           </div>
@@ -324,11 +425,13 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
         </label>
         <div className="relative">
           <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-construction-orange focus:border-transparent transition-all"
-          />
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-construction-orange focus:border-transparent transition-all"
+            />
         </div>
       </div>
 

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import AuthModal from "@/components/AuthModal";
 
 const Navigation = () => {
@@ -8,6 +10,8 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  
+  const { isLoggedIn, user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,24 +105,48 @@ const Navigation = () => {
             </div>
           </div>
 
-                    {/* Desktop CTA */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="text-construction-navy hover:text-construction-orange hover:bg-construction-orange/10 px-4"
-              onClick={() => setIsAuthModalOpen(true)}
-            >
-              Login
-            </Button>
-            <Button 
-              variant="accent" 
-              size="sm"
-              className="hover:scale-105 transition-transform duration-200 px-6"
-              onClick={() => setIsAuthModalOpen(true)}
-            >
-              Sign Up
-            </Button>
+            {isLoggedIn ? (
+              <>
+                <Link to={`/dashboard/${user?.role}`}>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="text-construction-navy hover:text-construction-orange hover:bg-construction-orange/10 px-4"
+                  >
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="hover:scale-105 transition-transform duration-200 px-4"
+                  onClick={logout}
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-construction-navy hover:text-construction-orange hover:bg-construction-orange/10 px-4"
+                  onClick={() => setIsAuthModalOpen(true)}
+                >
+                  Login
+                </Button>
+                <Button 
+                  variant="accent" 
+                  size="sm"
+                  className="hover:scale-105 transition-transform duration-200 px-6"
+                  onClick={() => setIsAuthModalOpen(true)}
+                >
+                  Sign Up
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
