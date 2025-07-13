@@ -22,6 +22,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
     setIsAnimating(true);
     setTimeout(() => {
       setAuthMode(newMode);
+      // Reset to builder if switching to signup and was admin
+      if (newMode === "signup" && userType === "admin") {
+        setUserType("builder");
+      }
       setIsAnimating(false);
     }, 300);
   };
@@ -91,7 +95,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         {/* User Type Selector - Only show for login and signup */}
         {authMode !== "forgot-password" && (
           <div className="p-6 border-b border-gray-100/50">
-            <div className="flex bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-1.5 shadow-inner">
+            <div className={`flex bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-1.5 shadow-inner ${authMode === "signup" ? "grid-cols-2" : "grid-cols-3"}`}>
               <button
                 onClick={() => handleUserTypeSwitch("builder")}
                 className={`flex-1 flex items-center justify-center py-3.5 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
@@ -114,17 +118,20 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 <Wrench className="h-4 w-4 mr-2" />
                 Contractor
               </button>
-              <button
-                onClick={() => handleUserTypeSwitch("admin")}
-                className={`flex-1 flex items-center justify-center py-3.5 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
-                  userType === "admin"
-                    ? "bg-white text-red-600 shadow-lg shadow-red-500/10 transform scale-105"
-                    : "text-gray-600 hover:text-red-600 hover:bg-white/50"
-                }`}
-              >
-                <Shield className="h-4 w-4 mr-2" />
-                Admin
-              </button>
+              {/* Admin option only for login */}
+              {authMode === "login" && (
+                <button
+                  onClick={() => handleUserTypeSwitch("admin")}
+                  className={`flex-1 flex items-center justify-center py-3.5 px-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
+                    userType === "admin"
+                      ? "bg-white text-red-600 shadow-lg shadow-red-500/10 transform scale-105"
+                      : "text-gray-600 hover:text-red-600 hover:bg-white/50"
+                  }`}
+                >
+                  <Shield className="h-4 w-4 mr-2" />
+                  Admin
+                </button>
+              )}
             </div>
           </div>
         )}
