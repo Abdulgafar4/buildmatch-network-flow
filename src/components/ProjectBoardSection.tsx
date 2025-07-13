@@ -87,11 +87,11 @@ const ProjectBoardSection = () => {
   ];
 
   return (
-    <section id="project-board" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="project-board" className="py-16 sm:py-20 bg-white">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <FadeInOnScroll className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
+        <FadeInOnScroll className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-construction-navy mb-4">
             <SplitText 
               text="See It In Action"
               animation="slideUp"
@@ -99,7 +99,7 @@ const ProjectBoardSection = () => {
               stagger={0.05}
             />
           </h2>
-          <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-construction-gray-dark max-w-2xl sm:max-w-3xl mx-auto px-4">
             <SplitText 
               text="Browse active projects and top contractors. This is what our platform looks like in real-time."
               animation="fadeIn"
@@ -109,69 +109,69 @@ const ProjectBoardSection = () => {
           </p>
         </FadeInOnScroll>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12">
           {/* Active Projects */}
           <div>
-            <h3 className="text-2xl font-bold text-construction-navy mb-6 flex items-center">
-              <DollarSign className="mr-3 h-6 w-6 text-construction-orange" />
+            <h3 className="text-xl sm:text-2xl font-bold text-construction-navy mb-4 sm:mb-6 flex items-center">
+              <DollarSign className="mr-3 h-5 w-5 sm:h-6 sm:w-6 text-construction-orange" />
               Active Projects
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {projects.map((project) => (
-                <div key={project.id} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-200">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-construction-navy mb-2">
+                <div key={project.id} className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-shadow duration-200">
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-base sm:text-lg font-semibold text-construction-navy mb-2 line-clamp-2">
                         {project.title}
                       </h4>
                       <div className="flex items-center text-construction-gray-dark mb-2">
                         {project.verified && (
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                          <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                         )}
-                        <span className="font-medium">{project.company}</span>
+                        <span className="font-medium text-sm sm:text-base truncate">{project.company}</span>
                       </div>
                     </div>
                     <Badge 
                       variant={project.urgency === "High" ? "destructive" : "secondary"}
-                      className="ml-4"
+                      className="ml-3 flex-shrink-0"
                     >
                       {project.urgency}
                     </Badge>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-sm text-construction-gray-dark">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4 text-xs sm:text-sm text-construction-gray-dark">
                     <div className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      {project.location}
+                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{project.location}</span>
                     </div>
                     <div className="flex items-center">
-                      <DollarSign className="h-4 w-4 mr-2" />
-                      {project.budget}
+                      <DollarSign className="h-3 w-3 sm:h-4 sm:w-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{project.budget}</span>
                     </div>
                     <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-2" />
-                      {project.timeline}
+                      <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{project.timeline}</span>
                     </div>
                     <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      Posted {project.posted}
+                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">Posted {project.posted}</span>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                     {project.trades.map((trade) => (
-                      <Badge key={trade} variant="outline" className="text-construction-orange border-construction-orange">
+                      <Badge key={trade} variant="outline" className="text-construction-orange border-construction-orange text-xs">
                         {trade}
                       </Badge>
                     ))}
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-construction-gray-dark">
+                    <span className="text-xs sm:text-sm text-construction-gray-dark">
                       {project.applicants} contractors applied
                     </span>
-                    <button className="bg-construction-orange text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-construction-orange-light transition-colors">
+                    <button className="bg-construction-orange text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-construction-orange-light transition-colors">
                       View Details
                     </button>
                   </div>
@@ -182,30 +182,30 @@ const ProjectBoardSection = () => {
 
           {/* Top Contractors */}
           <div>
-            <h3 className="text-2xl font-bold text-construction-navy mb-6 flex items-center">
-              <CheckCircle className="mr-3 h-6 w-6 text-construction-orange" />
+            <h3 className="text-xl sm:text-2xl font-bold text-construction-navy mb-4 sm:mb-6 flex items-center">
+              <CheckCircle className="mr-3 h-5 w-5 sm:h-6 sm:w-6 text-construction-orange" />
               Top Contractors
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {contractors.map((contractor) => (
-                <div key={contractor.id} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-200">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h4 className="text-lg font-semibold text-construction-navy mb-1 flex items-center">
-                        {contractor.name}
+                <div key={contractor.id} className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6 hover:shadow-lg transition-shadow duration-200">
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-base sm:text-lg font-semibold text-construction-navy mb-1 flex items-center">
+                        <span className="truncate">{contractor.name}</span>
                         {contractor.verified && (
-                          <CheckCircle className="h-5 w-5 text-green-500 ml-2" />
+                          <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 ml-2 flex-shrink-0" />
                         )}
                       </h4>
-                      <div className="flex items-center text-construction-gray-dark text-sm">
+                      <div className="flex items-center text-construction-gray-dark text-xs sm:text-sm">
                         <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium mr-2">
                           ⭐ {contractor.rating}
                         </span>
-                        <span>{contractor.experience}</span>
+                        <span className="truncate">{contractor.experience}</span>
                       </div>
                     </div>
-                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <div className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ml-3 flex-shrink-0 ${
                       contractor.available 
                         ? "bg-green-100 text-green-800" 
                         : "bg-gray-100 text-gray-600"
@@ -214,20 +214,20 @@ const ProjectBoardSection = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-2 mb-4 text-sm text-construction-gray-dark">
+                  <div className="grid grid-cols-1 gap-2 mb-3 sm:mb-4 text-xs sm:text-sm text-construction-gray-dark">
                     <div className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      {contractor.location}
+                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{contractor.location}</span>
                     </div>
                     <div>
-                      <strong>Specialty:</strong> {contractor.specialty}
+                      <strong>Specialty:</strong> <span className="truncate">{contractor.specialty}</span>
                     </div>
                     <div>
                       <strong>Recent Projects:</strong> {contractor.recentProjects}
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                     {contractor.badges.map((badge) => (
                       <Badge key={badge} variant="secondary" className="text-xs">
                         {badge}
@@ -235,7 +235,7 @@ const ProjectBoardSection = () => {
                     ))}
                   </div>
 
-                  <button className="w-full bg-construction-navy text-white py-2 rounded-lg text-sm font-medium hover:bg-construction-charcoal transition-colors">
+                  <button className="w-full bg-construction-navy text-white py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-construction-charcoal transition-colors">
                     View Profile
                   </button>
                 </div>
@@ -245,16 +245,21 @@ const ProjectBoardSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 bg-construction-gray rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-construction-navy mb-4">
+        <div className="text-center mt-12 sm:mt-16 bg-construction-gray rounded-2xl p-6 sm:p-8">
+          <h3 className="text-xl sm:text-2xl font-bold text-construction-navy mb-3 sm:mb-4">
             Ready to Get Started?
           </h3>
-          <p className="text-construction-gray-dark mb-6">
-            Join thousands of contractors and builders already using BuildMatch
+          <p className="text-construction-gray-dark mb-6 max-w-2xl mx-auto px-4">
+            Join thousands of builders and contractors who are already using Sifter to connect and grow their businesses.
           </p>
-          <button className="bg-construction-orange text-white px-8 py-3 rounded-lg font-semibold hover:bg-construction-orange-light transition-colors duration-200">
-            Get Started Free
-          </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <button className="bg-construction-orange text-white px-6 sm:px-8 py-3 rounded-lg font-medium hover:bg-construction-orange-light transition-colors w-full sm:w-auto">
+              Post Your First Project
+            </button>
+            <button className="border border-construction-navy text-construction-navy px-6 sm:px-8 py-3 rounded-lg font-medium hover:bg-construction-navy hover:text-white transition-colors w-full sm:w-auto">
+              Browse Projects
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -53,11 +53,11 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section id="why-us" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="why-us" className="py-16 sm:py-20">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <FadeInOnScroll className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-construction-navy mb-4">
+        <FadeInOnScroll className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-construction-navy mb-4">
             <SplitText 
               text="Why Choose Sifter?"
               animation="slideUp"
@@ -65,7 +65,7 @@ const WhyUsSection = () => {
               stagger={0.05}
             />
           </h2>
-          <p className="text-xl text-construction-gray-dark max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-construction-gray-dark max-w-2xl sm:max-w-3xl mx-auto px-4">
             <SplitText 
               text="Built specifically for Ontario contractors and builders. Local focus, quality control, and features that matter to construction professionals."
               animation="fadeIn"
@@ -76,28 +76,28 @@ const WhyUsSection = () => {
         </FadeInOnScroll>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-12 sm:mb-16 lg:mb-20">
           {/* Left Side - Image */}
           <FadeInOnScroll direction="left" delay={0.3}>
             <div className="relative">
               <img
                 src={toolsImage}
                 alt="Professional construction tools"
-                className="w-full h-96 object-cover rounded-2xl shadow-xl"
+                className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-2xl shadow-xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-construction-navy/20 to-transparent rounded-2xl"></div>
               
               {/* Floating Stats */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-xl z-10">
+              <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-white rounded-xl p-4 sm:p-6 shadow-xl z-10">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-construction-orange mb-1">4.9★</div>
-                  <div className="text-sm text-construction-gray-dark">Platform Rating</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-construction-orange mb-1">4.9★</div>
+                  <div className="text-xs sm:text-sm text-construction-gray-dark">Platform Rating</div>
                 </div>
               </div>
               
-              <div className="absolute -top-6 -left-6 bg-construction-orange rounded-xl p-4 shadow-xl z-10">
+              <div className="absolute -top-4 sm:-top-6 -left-4 sm:-left-6 bg-construction-orange rounded-xl p-3 sm:p-4 shadow-xl z-10">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white mb-1">$240M+</div>
+                  <div className="text-xl sm:text-2xl font-bold text-white mb-1">$240M+</div>
                   <div className="text-xs text-white/90">Projects Completed</div>
                 </div>
               </div>
@@ -106,15 +106,15 @@ const WhyUsSection = () => {
 
           {/* Right Side - Features */}
           <FadeInOnScroll direction="right" delay={0.5}>
-            <StaggeredChildren className="space-y-8" staggerDelay={0.2}>
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="bg-construction-orange w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Shield className="h-6 w-6 text-white" />
+            <StaggeredChildren className="space-y-6 sm:space-y-8" staggerDelay={0.2}>
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="bg-construction-orange w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-construction-navy mb-2">Local Expertise</h3>
-                  <p className="text-construction-gray-dark mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold text-construction-navy mb-2">Local Expertise</h3>
+                  <p className="text-construction-gray-dark mb-3 text-sm sm:text-base">
                     Ontario-specific regulations, local building codes, and regional contractor networks. 
                     We understand the unique needs of Ontario's construction industry.
                   </p>
@@ -126,14 +126,14 @@ const WhyUsSection = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="bg-construction-navy w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Zap className="h-6 w-6 text-white" />
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="bg-construction-navy w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-construction-navy mb-2">Quality Control System</h3>
-                  <p className="text-construction-gray-dark mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold text-construction-navy mb-2">Quality Control System</h3>
+                  <p className="text-construction-gray-dark mb-3 text-sm sm:text-base">
                     Maximum 5 contractors per city with waitlist management ensures quality over quantity. 
                     Every contractor earns their spot and maintains high standards.
                   </p>
@@ -145,14 +145,14 @@ const WhyUsSection = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="bg-construction-orange w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Users className="h-6 w-6 text-white" />
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="bg-construction-orange w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-construction-navy mb-2">Built for Construction</h3>
-                  <p className="text-construction-gray-dark mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold text-construction-navy mb-2">Built for Construction</h3>
+                  <p className="text-construction-gray-dark mb-3 text-sm sm:text-base">
                     Project timelines, trade-specific requirements, safety certifications, 
                     and industry jargon - we speak construction.
                   </p>
@@ -173,18 +173,18 @@ const WhyUsSection = () => {
           direction="both" 
           animation="scale" 
           intensity={1.5}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16"
         >
           {reasons.map((reason, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-200">
-              <div className="bg-construction-orange w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <reason.icon className="h-8 w-8 text-white" />
+            <div key={index} className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-lg transition-shadow duration-200">
+              <div className="bg-construction-orange w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <reason.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-construction-navy mb-3">{reason.title}</h3>
-              <p className="text-construction-gray-dark mb-4 leading-relaxed">{reason.description}</p>
-              <div className="border-t border-gray-200 pt-4">
-                <div className="text-2xl font-bold text-construction-orange mb-1">{reason.stat}</div>
-                <div className="text-sm text-construction-gray-dark">{reason.statLabel}</div>
+              <h3 className="text-lg sm:text-xl font-semibold text-construction-navy mb-2 sm:mb-3">{reason.title}</h3>
+              <p className="text-construction-gray-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">{reason.description}</p>
+              <div className="border-t border-gray-200 pt-3 sm:pt-4">
+                <div className="text-xl sm:text-2xl font-bold text-construction-orange mb-1">{reason.stat}</div>
+                <div className="text-xs sm:text-sm text-construction-gray-dark">{reason.statLabel}</div>
               </div>
             </div>
           ))}
@@ -196,9 +196,9 @@ const WhyUsSection = () => {
           direction="up" 
           delay={200} 
           duration={1000}
-          className="bg-white rounded-2xl p-8 shadow-xl"
+          className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl"
         >
-          <h3 className="text-2xl font-bold text-construction-navy mb-8 text-center">
+          <h3 className="text-xl sm:text-2xl font-bold text-construction-navy mb-6 sm:mb-8 text-center">
             Sifter vs. Traditional Methods
           </h3>
           
@@ -206,31 +206,31 @@ const WhyUsSection = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-4 px-4 font-semibold text-construction-navy">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold text-construction-orange">Sifter</th>
-                  <th className="text-center py-4 px-4 font-semibold text-construction-gray-dark">Traditional Methods</th>
+                  <th className="text-left py-3 sm:py-4 px-2 sm:px-4 font-semibold text-construction-navy text-sm sm:text-base">Feature</th>
+                  <th className="text-center py-3 sm:py-4 px-2 sm:px-4 font-semibold text-construction-orange text-sm sm:text-base">Sifter</th>
+                  <th className="text-center py-3 sm:py-4 px-2 sm:px-4 font-semibold text-construction-gray-dark text-sm sm:text-base">Traditional Methods</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 <tr>
-                  <td className="py-4 px-4 font-medium">Time to Find Contractor</td>
-                  <td className="py-4 px-4 text-center text-green-600 font-semibold">Hours</td>
-                  <td className="py-4 px-4 text-center text-red-600">Weeks</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 font-medium text-sm sm:text-base">Time to Find Contractor</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-green-600 font-semibold text-sm sm:text-base">Hours</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-red-600 text-sm sm:text-base">Weeks</td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-4 font-medium">Verification Process</td>
-                  <td className="py-4 px-4 text-center text-green-600 font-semibold">3-Tier Verification</td>
-                  <td className="py-4 px-4 text-center text-red-600">Manual/None</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 font-medium text-sm sm:text-base">Verification Process</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-green-600 font-semibold text-sm sm:text-base">3-Tier Verification</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-red-600 text-sm sm:text-base">Manual/None</td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-4 font-medium">Project Management</td>
-                  <td className="py-4 px-4 text-center text-green-600 font-semibold">Built-in Tools</td>
-                  <td className="py-4 px-4 text-center text-red-600">Separate Systems</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 font-medium text-sm sm:text-base">Project Management</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-green-600 font-semibold text-sm sm:text-base">Built-in Tools</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-red-600 text-sm sm:text-base">Separate Systems</td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-4 font-medium">Payment Protection</td>
-                  <td className="py-4 px-4 text-center text-green-600 font-semibold">Escrow & Insurance</td>
-                  <td className="py-4 px-4 text-center text-red-600">Limited</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 font-medium text-sm sm:text-base">Payment Protection</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-green-600 font-semibold text-sm sm:text-base">Escrow & Insurance</td>
+                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-red-600 text-sm sm:text-base">Limited</td>
                 </tr>
               </tbody>
             </table>

@@ -47,10 +47,8 @@ const Navigation = () => {
   const navItems = [
     { name: "How It Works", href: "#how-it-works" },
     { name: "Project Board", href: "#project-board" },
-
     { name: "Search & Filter", href: "#search-filter" },
     { name: "Why Us", href: "#why-us" },
-
   ];
 
   return (
@@ -61,14 +59,14 @@ const Navigation = () => {
           : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <button 
                 onClick={() => scrollToSection('#hero')}
-                className="text-2xl font-bold text-construction-orange hover:text-construction-orange transition-colors duration-200"
+                className="text-xl sm:text-2xl font-bold text-construction-orange hover:text-construction-orange transition-colors duration-200"
               >
                 Sifter
               </button>
@@ -77,14 +75,14 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-12 flex items-baseline space-x-10">
+            <div className="ml-8 lg:ml-12 flex items-baseline space-x-6 lg:space-x-10">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.substring(1);
                 return (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`px-4 py-2 text-sm font-medium transition-all duration-200 relative group ${
+                    className={`px-3 lg:px-4 py-2 text-sm font-medium transition-all duration-200 relative group ${
                       isActive 
                         ? "text-construction-orange" 
                         : "text-construction-navy hover:text-construction-orange"
@@ -101,12 +99,12 @@ const Navigation = () => {
             </div>
           </div>
 
-                    {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-3">
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
             <Button 
               variant="ghost" 
               size="sm" 
-              className="text-construction-navy hover:text-construction-orange hover:bg-construction-orange/10 px-4"
+              className="text-construction-navy hover:text-construction-orange hover:bg-construction-orange/10 px-3 lg:px-4 text-sm"
               onClick={() => setIsAuthModalOpen(true)}
             >
               Login
@@ -114,7 +112,7 @@ const Navigation = () => {
             <Button 
               variant="accent" 
               size="sm"
-              className="hover:scale-105 transition-transform duration-200 px-6"
+              className="hover:scale-105 transition-transform duration-200 px-4 lg:px-6 text-sm"
               onClick={() => setIsAuthModalOpen(true)}
             >
               Sign Up
@@ -127,12 +125,12 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="hover:bg-construction-orange/10"
+              className="hover:bg-construction-orange/10 h-10 w-10"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5" />
               )}
             </Button>
           </div>
@@ -141,7 +139,7 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-3 pt-3 pb-4 space-y-2 bg-white/95 backdrop-blur-md rounded-lg mt-3 shadow-lg border border-gray-200/50">
+            <div className="px-4 py-4 space-y-2 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg border border-gray-200/50">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.substring(1);
                 return (
@@ -162,7 +160,7 @@ const Navigation = () => {
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="w-full text-construction-navy hover:text-construction-orange hover:bg-construction-orange/10 py-3"
+                  className="w-full text-construction-navy hover:text-construction-orange hover:bg-construction-orange/10 py-3 text-base"
                   onClick={() => setIsAuthModalOpen(true)}
                 >
                   Login
@@ -170,7 +168,7 @@ const Navigation = () => {
                 <Button 
                   variant="accent" 
                   size="sm" 
-                  className="w-full hover:scale-105 transition-transform duration-200 py-3"
+                  className="w-full hover:scale-105 transition-transform duration-200 py-3 text-base"
                   onClick={() => setIsAuthModalOpen(true)}
                 >
                   Sign Up

@@ -9,8 +9,8 @@ const HeroSection = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-20">
-      <section id="hero" className="relative min-h-[70vh] flex items-center justify-center overflow-hidden rounded-2xl shadow-xl">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-8 mt-20">
+      <section id="hero" className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden rounded-2xl shadow-xl max-w-7xl mx-auto">
         {/* Background with overlay */}
         <div className="absolute inset-0">
           <img
@@ -22,11 +22,11 @@ const HeroSection = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 xl:px-12 max-w-5xl mx-auto w-full">
           <div className="animate-fade-up">
             {/* Logo/Brand */}
-            <div className="mb-8">
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+            <div className="mb-6 sm:mb-8">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 sm:mb-4">
                 <SplitText 
                   text="Sifter" 
                   className="text-construction-orange"
@@ -38,7 +38,7 @@ const HeroSection = () => {
             </div>
 
             {/* Main Tagline */}
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
               <SplitText 
                 text="Ontario's Premier"
                 animation="slideUp"
@@ -56,7 +56,7 @@ const HeroSection = () => {
             </h2>
 
             {/* Subtext */}
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed px-2">
               <SplitText 
                 text="Connecting builders in need to contractors who deliver"
                 animation="fadeIn"
@@ -66,20 +66,20 @@ const HeroSection = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
               <Button
                 variant="accent"
                 size="xl"
-                className="group min-w-[200px]"
+                className="group w-full sm:w-auto min-w-[180px] sm:min-w-[200px] text-base sm:text-lg"
                 onClick={() => setIsAuthModalOpen(true)}
               >
                 Post Job (Builders)
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 variant="outline-accent"
                 size="xl"
-                className="min-w-[200px]"
+                className="w-full sm:w-auto min-w-[180px] sm:min-w-[200px] text-base sm:text-lg"
                 onClick={() => setIsAuthModalOpen(true)}
               >
                 Find Work ($150/mo)
@@ -90,9 +90,9 @@ const HeroSection = () => {
             <div className="flex items-center justify-center">
               <Button
                 variant="ghost"
-                className="text-white group"
+                className="text-white group text-sm sm:text-base"
               >
-                <Play className="mr-2 h-5 w-5  transition-transform" />
+                <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform" />
                 See How It Works
               </Button>
             </div>
