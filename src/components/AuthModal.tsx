@@ -20,6 +20,60 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Handle escape key to close modal and focus management
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+      
+      const modal = document.querySelector('[data-modal]') as HTMLElement;
+      if (!modal) return;
+      
+      const focusableElements = modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+      
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleTab);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+      
+      // Focus the close button when modal opens
+      const closeButton = document.querySelector('[data-modal-close]') as HTMLButtonElement;
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleTab);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
   const handleModeSwitch = (newMode: AuthMode) => {
     if (newMode === authMode) return;
     setIsAnimating(true);
@@ -49,11 +103,21 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-md transition-all duration-500"
-        onClick={onClose}
+        onClick={(e) => {
+          e.preventDefault();
+          onClose();
+        }}
       />
       
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in transform transition-all duration-300 hover:shadow-3xl">
+      <div 
+        className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in transform transition-all duration-300 hover:shadow-3xl"
+        onClick={(e) => e.stopPropagation()}
+        data-modal
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
         {/* Header */}
         <div className="relative bg-gradient-to-br from-construction-navy via-construction-charcoal to-slate-800 p-8 text-white overflow-hidden">
           {/* Animated background elements */}
@@ -61,14 +125,21 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12 animate-pulse delay-1000"></div>
           
           <button
-            onClick={onClose}
-            className="absolute top-6 right-6 p-2.5 hover:bg-white/20 rounded-xl transition-all duration-300 hover:rotate-90 hover:scale-110 group"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onClose();
+            }}
+            className="absolute top-6 right-6 p-2.5 hover:bg-white/20 rounded-xl transition-all duration-300 hover:rotate-90 hover:scale-110 group z-10"
+            data-modal-close
+            aria-label="Close modal"
+            type="button"
           >
             <X className="h-5 w-5 transition-transform duration-300 group-hover:rotate-180" />
           </button>
           
           <div className="text-center relative z-10">
-            <h2 className="text-2xl font-bold mb-2">
+            <h2 id="modal-title" className="text-2xl font-bold mb-2">
               <SplitText 
                 text={
                   authMode === "login" ? "Welcome Back" : 
@@ -232,10 +303,11 @@ const LoginForm: React.FC<{ userType: UserType; onForgotPassword: () => void; on
           description: "Please fill in all required fields.",
           variant: "destructive"
         });
+        setIsSubmitting(false);
         return;
       }
 
-      login(formData.email, formData.password, userType as UserRole);
+      await login(formData.email, formData.password, userType as UserRole);
       
       toast({
         title: "Success",
@@ -353,6 +425,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
           description: "Please fill in all required fields.",
           variant: "destructive"
         });
+        setIsSubmitting(false);
         return;
       }
 
@@ -362,10 +435,11 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
           description: "Passwords do not match.",
           variant: "destructive"
         });
+        setIsSubmitting(false);
         return;
       }
 
-      login(formData.email, formData.password, userType as UserRole);
+      await login(formData.email, formData.password, userType as UserRole);
       
       toast({
         title: "Success",
