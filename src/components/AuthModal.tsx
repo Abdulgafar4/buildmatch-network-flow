@@ -21,7 +21,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 min-h-screen animate-fade-in">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -29,7 +29,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
       />
       
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden animate-scale-in">
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-4xl h-auto max-h-[90vh] overflow-hidden animate-scale-in mx-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -39,7 +39,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         {/* Split Screen Layout */}
-        <div className="flex h-[600px]">
+        <div className="flex min-h-[600px]">
           {/* Left Side - Form */}
           <div className="flex-1 p-12 flex flex-col justify-center">
             <div className="max-w-md mx-auto w-full">
