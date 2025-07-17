@@ -57,7 +57,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                   <div className="relative bg-gray-100 rounded-lg p-1">
                     {/* Animated Background */}
                     <div 
-                      className={`absolute top-1 bottom-1 w-1/2 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-md transition-all duration-300 ease-out transform ${
+                      className={`absolute top-1 bottom-1 w-1/2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-md transition-all duration-300 ease-out transform ${
                         userType === "builder" 
                           ? "left-1 translate-x-0" 
                           : "left-1/2 translate-x-0"
@@ -93,7 +93,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               {userType === "admin" && (
                 <div className="mb-6 text-center">
                   <div className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-full text-sm font-medium mb-4">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full mr-2"></div>
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                     Admin Access
                   </div>
                   <button
@@ -141,7 +141,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                     {authMode === "signup" ? "Have any account?" : "Don't have an account?"}{" "}
                     <button
                       onClick={() => setAuthMode(authMode === "signup" ? "login" : "signup")}
-                      className="text-blue-600 hover:text-blue-500 font-medium underline"
+                      className="text-orange-600 hover:text-orange-500 font-medium underline"
                     >
                       {authMode === "signup" ? "Sign in" : "Sign up"}
                     </button>
@@ -177,7 +177,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40" />
             
             {/* Floating UI elements */}
-            <div className="absolute top-8 left-8 bg-yellow-400 text-black px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+            <div className="absolute top-8 left-8 bg-orange-400 text-black px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                 Task Review With Team
@@ -187,7 +187,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
             <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg">
               <div className="flex items-center text-sm font-medium text-gray-900 mb-1">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                 Daily Meeting
               </div>
               <div className="text-xs text-gray-600 mb-2">12:00pm-01:00pm</div>
@@ -269,7 +269,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <h2 className="text-xl font-semibold text-gray-900 mb-4">
-        Create an account
+        Create {userType} account
       </h2>
 
       <div>
@@ -281,7 +281,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
           placeholder="Amélie Laurent"
           value={formData.fullName}
           onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
         />
       </div>
 
@@ -294,7 +294,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
           placeholder="amélie.laurent7622@gmail.com"
           value={formData.email}
           onChange={(e) => setFormData({...formData, email: e.target.value})}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
         />
       </div>
 
@@ -308,7 +308,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
             placeholder="••••••••••••••••••••••••"
             value={formData.password}
             onChange={(e) => setFormData({...formData, password: e.target.value})}
-            className="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+            className="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
           />
           <button
             type="button"
@@ -322,7 +322,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
 
       <Button
         type="submit"
-        className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2.5 rounded-lg transition-all"
+        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 rounded-lg transition-all"
       >
         Submit
       </Button>
@@ -376,7 +376,7 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <h2 className="text-xl font-semibold text-gray-900 mb-4">
-        Welcome back
+        {userType === "admin" ? "Admin Login" : `Welcome back, ${userType}`}
       </h2>
 
       <div>
@@ -388,7 +388,7 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
           placeholder="Enter your email"
           value={formData.email}
           onChange={(e) => setFormData({...formData, email: e.target.value})}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
         />
       </div>
 
@@ -402,7 +402,7 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
             placeholder="Enter your password"
             value={formData.password}
             onChange={(e) => setFormData({...formData, password: e.target.value})}
-            className="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+            className="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
           />
           <button
             type="button"
@@ -416,12 +416,12 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
 
       <div className="flex items-center justify-between">
         <label className="flex items-center">
-          <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+          <input type="checkbox" className="rounded border-gray-300 text-orange-600 focus:ring-orange-500" />
           <span className="ml-2 text-sm text-gray-600">Remember me</span>
         </label>
         <button 
           type="button" 
-          className="text-sm text-blue-600 hover:text-blue-500"
+          className="text-sm text-orange-600 hover:text-orange-500"
         >
           Forgot password?
         </button>
@@ -429,7 +429,7 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
 
       <Button
         type="submit"
-        className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2.5 rounded-lg transition-all"
+        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 rounded-lg transition-all"
       >
         Sign In
       </Button>
