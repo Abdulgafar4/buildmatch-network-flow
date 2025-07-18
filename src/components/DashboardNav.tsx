@@ -4,10 +4,23 @@ import { Menu, X, LogOut, User, Settings, LayoutDashboard } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 
-const DashboardNav = () => {
+// Add prop for setActiveTab function
+interface DashboardNavProps {
+  setActiveTab?: (tab: string) => void;
+  activeTab?: string;
+}
+
+const DashboardNav = ({ setActiveTab, activeTab }: DashboardNavProps = {}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, logout, currentDashboard, switchDashboard } = useAuth();
   const location = useLocation();
+
+  const handleNavClick = (tab: string) => {
+    if (setActiveTab) {
+      setActiveTab(tab);
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   const getNavItems = () => {
     const dashboard = currentDashboard || user?.role;
@@ -15,24 +28,24 @@ const DashboardNav = () => {
     switch (dashboard) {
       case 'builder':
         return [
-          { name: "Dashboard", href: "/dashboard/builder" },
-          { name: "My Projects", href: "/dashboard/builder/projects" },
-          { name: "Find Contractors", href: "/dashboard/builder/contractors" },
-          { name: "Messages", href: "/dashboard/builder/messages" },
+          { name: "Dashboard", tab: "overview" },
+          { name: "My Projects", tab: "projects" },
+          { name: "Find Contractors", tab: "contractors" },
+          { name: "Messages", tab: "messages" },
         ];
       case 'contractor':
         return [
-          { name: "Dashboard", href: "/dashboard/contractor" },
-          { name: "Browse Jobs", href: "/dashboard/contractor/jobs" },
-          { name: "My Bids", href: "/dashboard/contractor/bids" },
-          { name: "Messages", href: "/dashboard/contractor/messages" },
+          { name: "Dashboard", tab: "overview" },
+          { name: "Browse Jobs", tab: "jobs" },
+          { name: "My Bids", tab: "bids" },
+          { name: "Messages", tab: "messages" },
         ];
       case 'admin':
         return [
-          { name: "Dashboard", href: "/dashboard/admin" },
-          { name: "Users", href: "/dashboard/admin/users" },
-          { name: "Projects", href: "/dashboard/admin/projects" },
-          { name: "Analytics", href: "/dashboard/admin/analytics" },
+          { name: "Dashboard", tab: "overview" },
+          { name: "Users", tab: "users" },
+          { name: "Projects", tab: "projects" },
+          { name: "Analytics", tab: "analytics" },
         ];
       default:
         return [];
@@ -83,11 +96,11 @@ const DashboardNav = () => {
           <div className="hidden md:block">
             <div className="ml-12 flex items-baseline space-x-8">
               {navItems.map((item) => {
-                const isActive = location.pathname === item.href;
+                const isActive = activeTab === item.tab;
                 return (
-                  <Link
+                  <button
                     key={item.name}
-                    to={item.href}
+                    onClick={() => handleNavClick(item.tab)}
                     className={`px-4 py-2 text-sm font-medium transition-all duration-200 relative group ${
                       isActive 
                         ? "text-construction-orange" 
@@ -99,7 +112,7 @@ const DashboardNav = () => {
                       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-construction-orange rounded-full"></div>
                     )}
                     <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-construction-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full"></div>
-                  </Link>
+                  </button>
                 );
               })}
             </div>
@@ -154,20 +167,19 @@ const DashboardNav = () => {
               )}
               
               {navItems.map((item) => {
-                const isActive = location.pathname === item.href;
+                const isActive = activeTab === item.tab;
                 return (
-                  <Link
+                  <button
                     key={item.name}
-                    to={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 text-base font-medium transition-all duration-200 rounded-md ${
+                    onClick={() => handleNavClick(item.tab)}
+                    className={`block w-full text-left px-4 py-3 text-base font-medium transition-all duration-200 rounded-md ${
                       isActive 
                         ? "text-construction-orange bg-construction-orange/10" 
                         : "text-construction-navy hover:text-construction-orange hover:bg-gray-100"
                     }`}
                   >
                     {item.name}
-                  </Link>
+                  </button>
                 );
               })}
               
