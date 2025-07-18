@@ -13,11 +13,85 @@ import {
   AlertCircle,
   DollarSign,
   MapPin,
-  Calendar
+  Calendar,
+  Search,
+  Filter,
+  Star,
+  Badge,
+  Eye,
+  Edit,
+  Trash2,
+  Send
 } from "lucide-react";
 
 const BuilderDashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
+
+  const contractors = [
+    {
+      id: 1,
+      name: "Mike Construction Co.",
+      specialty: "Kitchen & Bathroom",
+      rating: 4.8,
+      reviews: 127,
+      location: "San Francisco, CA",
+      hourlyRate: "$85-120",
+      verified: true,
+      avatar: "/placeholder.svg"
+    },
+    {
+      id: 2,
+      name: "Elite Builders",
+      specialty: "General Construction",
+      rating: 4.9,
+      reviews: 203,
+      location: "Oakland, CA",
+      hourlyRate: "$95-150",
+      verified: true,
+      avatar: "/placeholder.svg"
+    },
+    {
+      id: 3,
+      name: "Quality Deck Works",
+      specialty: "Outdoor Construction",
+      rating: 4.7,
+      reviews: 89,
+      location: "San Jose, CA",
+      hourlyRate: "$70-100",
+      verified: false,
+      avatar: "/placeholder.svg"
+    }
+  ];
+
+  const messages = [
+    {
+      id: 1,
+      contractor: "Mike Construction Co.",
+      project: "Kitchen Renovation",
+      lastMessage: "I can start the project next week. Let me know if you'd like to discuss the timeline.",
+      timestamp: "2 hours ago",
+      unread: true,
+      avatar: "/placeholder.svg"
+    },
+    {
+      id: 2,
+      contractor: "Elite Builders",
+      project: "Bathroom Remodel",
+      lastMessage: "Thanks for choosing us! I've sent over the detailed proposal.",
+      timestamp: "1 day ago",
+      unread: false,
+      avatar: "/placeholder.svg"
+    },
+    {
+      id: 3,
+      contractor: "Quality Deck Works",
+      project: "Deck Construction",
+      lastMessage: "What type of composite material would you prefer?",
+      timestamp: "3 days ago",
+      unread: true,
+      avatar: "/placeholder.svg"
+    }
+  ];
 
   const projects = [
     {
@@ -128,7 +202,7 @@ const BuilderDashboard = () => {
         {/* Tabs */}
         <div className="border-b border-gray-200 mb-6">
           <nav className="-mb-px flex space-x-8">
-            {["overview", "projects", "contractors"].map((tab) => (
+            {["overview", "projects", "contractors", "messages"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -139,6 +213,11 @@ const BuilderDashboard = () => {
                 }`}
               >
                 {tab}
+                {tab === "messages" && (
+                  <span className="ml-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {messages.filter(m => m.unread).length}
+                  </span>
+                )}
               </button>
             ))}
           </nav>
@@ -275,10 +354,18 @@ const BuilderDashboard = () => {
                           <div className="text-right">
                             <p className="text-lg font-semibold text-gray-900 mb-2">{project.bids}</p>
                             <p className="text-sm text-gray-600 mb-3">Bids Received</p>
-                            <div className="space-x-2">
-                              <Button variant="outline" size="sm">View Bids</Button>
+                            <div className="flex space-x-2">
+                              <Button variant="outline" size="sm">
+                                <Eye className="h-4 w-4 mr-1" />
+                                View Bids
+                              </Button>
                               <Button size="sm" className="bg-construction-orange hover:bg-construction-orange/90">
-                                Manage
+                                <Edit className="h-4 w-4 mr-1" />
+                                Edit
+                              </Button>
+                              <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700">
+                                <Trash2 className="h-4 w-4 mr-1" />
+                                Delete
                               </Button>
                             </div>
                           </div>
@@ -296,17 +383,122 @@ const BuilderDashboard = () => {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Find Contractors</CardTitle>
-                <CardDescription>Browse and connect with verified contractors</CardDescription>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle>Find Contractors</CardTitle>
+                    <CardDescription>Browse and connect with verified contractors</CardDescription>
+                  </div>
+                  <div className="flex space-x-2">
+                    <Button variant="outline" size="sm">
+                      <Filter className="h-4 w-4 mr-2" />
+                      Filters
+                    </Button>
+                    <Button variant="outline" size="sm">
+                      <Search className="h-4 w-4 mr-2" />
+                      Search
+                    </Button>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
-                <div className="text-center py-12">
-                  <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Contractor Directory</h3>
-                  <p className="text-gray-600 mb-6">Search and filter contractors by specialty, location, and ratings</p>
-                  <Button className="bg-construction-orange hover:bg-construction-orange/90">
-                    Browse Contractors
-                  </Button>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {contractors.map((contractor) => (
+                    <Card key={contractor.id} className="hover:shadow-lg transition-shadow duration-300">
+                      <CardContent className="p-6">
+                        <div className="flex items-start space-x-4 mb-4">
+                          <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                            <Users className="h-6 w-6 text-gray-500" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2 mb-1">
+                              <h3 className="font-semibold text-gray-900">{contractor.name}</h3>
+                              {contractor.verified && (
+                                <Badge className="bg-green-100 text-green-800 text-xs px-2 py-1">
+                                  <CheckCircle className="h-3 w-3 mr-1" />
+                                  Verified
+                                </Badge>
+                              )}
+                            </div>
+                            <p className="text-sm text-gray-600 mb-2">{contractor.specialty}</p>
+                            <div className="flex items-center space-x-1 mb-2">
+                              <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                              <span className="text-sm font-medium">{contractor.rating}</span>
+                              <span className="text-sm text-gray-500">({contractor.reviews} reviews)</span>
+                            </div>
+                            <div className="space-y-1 text-sm text-gray-600">
+                              <div className="flex items-center">
+                                <MapPin className="h-3 w-3 mr-1" />
+                                {contractor.location}
+                              </div>
+                              <div className="flex items-center">
+                                <DollarSign className="h-3 w-3 mr-1" />
+                                {contractor.hourlyRate}/hr
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <Button className="w-full bg-construction-orange hover:bg-construction-orange/90" size="sm">
+                            Contact Contractor
+                          </Button>
+                          <Button variant="outline" className="w-full" size="sm">
+                            <Eye className="h-4 w-4 mr-2" />
+                            View Profile
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {activeTab === "messages" && (
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Messages</CardTitle>
+                <CardDescription>Communicate with contractors about your projects</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {messages.map((message) => (
+                    <Card key={message.id} className={`hover:shadow-md transition-shadow duration-200 ${message.unread ? 'border-l-4 border-l-construction-orange' : ''}`}>
+                      <CardContent className="p-4">
+                        <div className="flex items-start space-x-4">
+                          <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                            <Users className="h-5 w-5 text-gray-500" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-2">
+                              <div>
+                                <h3 className="font-semibold text-gray-900">{message.contractor}</h3>
+                                <p className="text-sm text-gray-600">Re: {message.project}</p>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-xs text-gray-500">{message.timestamp}</p>
+                                {message.unread && (
+                                  <span className="inline-block w-2 h-2 bg-construction-orange rounded-full mt-1"></span>
+                                )}
+                              </div>
+                            </div>
+                            <p className="text-gray-700 mb-3">{message.lastMessage}</p>
+                            <div className="flex space-x-2">
+                              <Button size="sm" className="bg-construction-orange hover:bg-construction-orange/90">
+                                <Send className="h-4 w-4 mr-2" />
+                                Reply
+                              </Button>
+                              <Button variant="outline" size="sm">
+                                View Conversation
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               </CardContent>
             </Card>
