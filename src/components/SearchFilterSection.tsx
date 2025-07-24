@@ -11,13 +11,13 @@ const SearchFilterSection = () => {
   const [selectedLocation, setSelectedLocation] = useState("All");
 
   const trades = ["All", "Electrical", "Plumbing", "Framing", "Roofing", "HVAC", "Concrete", "Painting"];
-  const locations = ["All", "Toronto, ON", "Ottawa, ON", "Hamilton, ON", "London, ON", "Windsor, ON"];
+  const locations = ["All", "Pickering", "Ajax", "Whitby", "Oshawa", "North York", "Bridle Path", "Mount Pleasant", "Beaches", "Thornhill", "Markham", "Aurora", "Richmond Hill", "Vaughan", "Maple", "Kleinburg"];
 
   const mockResults = [
     {
       name: "Elite Electrical Co.",
       trade: "Electrical",
-      location: "Toronto, ON",
+      location: "Markham",
       rating: 4.9,
       projects: 156,
       verified: true,
@@ -27,7 +27,7 @@ const SearchFilterSection = () => {
     {
       name: "Master Plumbing Services",
       trade: "Plumbing", 
-      location: "Ottawa, ON",
+      location: "Richmond Hill",
       rating: 4.8,
       projects: 98,
       verified: true,
@@ -37,7 +37,7 @@ const SearchFilterSection = () => {
     {
       name: "Precision Framing LLC",
       trade: "Framing",
-      location: "Hamilton, ON", 
+      location: "Vaughan", 
       rating: 4.9,
       projects: 203,
       verified: true,
