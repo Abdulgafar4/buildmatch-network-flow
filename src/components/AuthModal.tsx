@@ -29,23 +29,23 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
       />
       
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-4xl h-auto max-h-[90vh] overflow-hidden animate-scale-in mx-auto">
+      <div className="relative bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-md sm:max-w-lg md:max-w-4xl h-auto max-h-[95vh] md:max-h-[90vh] overflow-hidden animate-scale-in mx-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 p-2 hover:bg-gray-100 rounded-full transition-all duration-200"
+          className="absolute top-4 right-4 md:top-6 md:right-6 z-10 p-2 hover:bg-gray-100 rounded-full transition-all duration-200"
         >
-          <X className="h-5 w-5 text-gray-600" />
+          <X className="h-4 w-4 md:h-5 md:w-5 text-gray-600" />
         </button>
 
         {/* Split Screen Layout */}
-        <div className="flex min-h-[600px]">
+        <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px]">
           {/* Left Side - Form */}
-          <div className="flex-1 p-12 flex flex-col justify-center">
+          <div className="flex-1 p-6 sm:p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
             <div className="max-w-md mx-auto w-full">
               {/* Logo/Brand */}
-              <div className="mb-8">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">Sifter</h1>
+              <div className="mb-6 md:mb-8 text-center md:text-left">
+                <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Sifter</h1>
                 <p className="text-gray-600 text-sm">
                   Sign up and get 30 day free trial
                 </p>
@@ -53,7 +53,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
               {/* User Type Selection */}
               {userType !== "admin" && (
-                <div className="mb-6">
+                <div className="mb-4 md:mb-6">
                   <div className="relative bg-gray-100 rounded-lg p-1">
                     {/* Animated Background */}
                     <div 
@@ -66,7 +66,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                     <div className="relative flex">
                       <button
                         onClick={() => setUserType("builder")}
-                        className={`flex-1 py-3 px-4 rounded-md text-sm font-semibold transition-all duration-300 ease-out relative z-10 ${
+                        className={`flex-1 py-2.5 md:py-3 px-3 md:px-4 rounded-md text-xs md:text-sm font-semibold transition-all duration-300 ease-out relative z-10 ${
                           userType === "builder"
                             ? "text-black"
                             : "text-gray-600 hover:text-gray-900"
@@ -76,7 +76,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                       </button>
                       <button
                         onClick={() => setUserType("contractor")}
-                        className={`flex-1 py-3 px-4 rounded-md text-sm font-semibold transition-all duration-300 ease-out relative z-10 ${
+                        className={`flex-1 py-2.5 md:py-3 px-3 md:px-4 rounded-md text-xs md:text-sm font-semibold transition-all duration-300 ease-out relative z-10 ${
                           userType === "contractor"
                             ? "text-black"
                             : "text-gray-600 hover:text-gray-900"
@@ -91,7 +91,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
               {/* Admin Header */}
               {userType === "admin" && (
-                <div className="mb-6 text-center">
+                <div className="mb-4 md:mb-6 text-center">
                   <div className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-full text-sm font-medium mb-4">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                     Admin Access
@@ -117,13 +117,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
               {/* Social Login */}
               {userType !== "admin" && (
-                <div className="mt-6 space-y-3">
-                  <button className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all">
-                    <Apple className="h-5 w-5 mr-2" />
+                <div className="mt-4 md:mt-6 space-y-2 md:space-y-3">
+                  <button className="w-full flex items-center justify-center px-3 md:px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all">
+                    <Apple className="h-4 w-4 md:h-5 md:w-5 mr-2" />
                     Apple
                   </button>
-                  <button className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all">
-                    <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
+                  <button className="w-full flex items-center justify-center px-3 md:px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all">
+                    <svg className="h-4 w-4 md:h-5 md:w-5 mr-2" viewBox="0 0 24 24">
                       <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                       <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                       <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
@@ -136,7 +136,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
               {/* Switch Mode */}
               {userType !== "admin" && (
-                <div className="mt-6 text-center">
+                <div className="mt-4 md:mt-6 text-center">
                   <p className="text-sm text-gray-600">
                     {authMode === "signup" ? "Have any account?" : "Don't have an account?"}{" "}
                     <button
@@ -151,7 +151,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
               {/* Admin Access Button */}
               {userType !== "admin" && (
-                <div className="mt-6 pt-4 border-t border-gray-200">
+                <div className="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-gray-200">
                   <button
                     onClick={() => {
                       setUserType("admin");
@@ -167,7 +167,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Right Side - Image */}
-          <div className="flex-1 relative overflow-hidden">
+          <div className="flex-1 relative overflow-hidden h-32 md:h-auto order-1 md:order-2">
             <img
               src={heroImage}
               alt="Construction team collaboration"
@@ -176,8 +176,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             {/* Overlay elements similar to reference */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40" />
             
-            {/* Floating UI elements */}
-            <div className="absolute top-8 left-8 bg-orange-400 text-black px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+            {/* Floating UI elements - hidden on mobile for cleaner look */}
+            <div className="hidden md:block absolute top-8 left-8 bg-orange-400 text-black px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                 Task Review With Team
@@ -185,7 +185,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               <div className="text-xs mt-1 opacity-75">09:30am-10:00am</div>
             </div>
 
-            <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg">
+            <div className="hidden md:block absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg">
               <div className="flex items-center text-sm font-medium text-gray-900 mb-1">
                 <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                 Daily Meeting
@@ -198,7 +198,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
+            <div className="hidden md:block absolute top-1/2 right-8 transform -translate-y-1/2">
               <div className="flex flex-col -space-y-2">
                 <div className="w-12 h-12 bg-white rounded-full border-4 border-white shadow-lg"></div>
                 <div className="w-10 h-10 bg-white rounded-full border-4 border-white shadow-lg"></div>
@@ -267,8 +267,8 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-xl font-semibold text-gray-900 mb-4">
+    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+      <h2 className="text-lg md:text-xl font-semibold text-gray-900 mb-3 md:mb-4">
         Create {userType} account
       </h2>
 
@@ -281,7 +281,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
           placeholder="Amélie Laurent"
           value={formData.fullName}
           onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+          className="w-full px-3 py-2 md:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm md:text-base"
         />
       </div>
 
@@ -294,7 +294,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
           placeholder="amélie.laurent7622@gmail.com"
           value={formData.email}
           onChange={(e) => setFormData({...formData, email: e.target.value})}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+          className="w-full px-3 py-2 md:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm md:text-base"
         />
       </div>
 
@@ -308,7 +308,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
             placeholder="••••••••••••••••••••••••"
             value={formData.password}
             onChange={(e) => setFormData({...formData, password: e.target.value})}
-            className="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+            className="w-full px-3 py-2 md:py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm md:text-base"
           />
           <button
             type="button"
@@ -322,7 +322,7 @@ const SignupForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ use
 
       <Button
         type="submit"
-        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 rounded-lg transition-all"
+        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 md:py-2.5 rounded-lg transition-all text-sm md:text-base"
       >
         Submit
       </Button>
@@ -374,8 +374,8 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-xl font-semibold text-gray-900 mb-4">
+    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+      <h2 className="text-lg md:text-xl font-semibold text-gray-900 mb-3 md:mb-4">
         {userType === "admin" ? "Admin Login" : `Welcome back, ${userType}`}
       </h2>
 
@@ -388,7 +388,7 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
           placeholder="Enter your email"
           value={formData.email}
           onChange={(e) => setFormData({...formData, email: e.target.value})}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+          className="w-full px-3 py-2 md:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm md:text-base"
         />
       </div>
 
@@ -402,7 +402,7 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
             placeholder="Enter your password"
             value={formData.password}
             onChange={(e) => setFormData({...formData, password: e.target.value})}
-            className="w-full px-3 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+            className="w-full px-3 py-2 md:py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-sm md:text-base"
           />
           <button
             type="button"
@@ -429,7 +429,7 @@ const LoginForm: React.FC<{ userType: UserType; onClose: () => void }> = ({ user
 
       <Button
         type="submit"
-        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 rounded-lg transition-all"
+        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 md:py-2.5 rounded-lg transition-all text-sm md:text-base"
       >
         Sign In
       </Button>
