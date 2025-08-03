@@ -34,7 +34,7 @@ const BuilderDashboard = () => {
       specialty: "Kitchen & Bathroom",
       rating: 4.8,
       reviews: 127,
-      location: "San Francisco, CA",
+      location: "Markham",
       hourlyRate: "$85-120",
       verified: true,
       avatar: "/placeholder.svg"
@@ -45,7 +45,7 @@ const BuilderDashboard = () => {
       specialty: "General Construction",
       rating: 4.9,
       reviews: 203,
-      location: "Oakland, CA",
+      location: "Vaughan",
       hourlyRate: "$95-150",
       verified: true,
       avatar: "/placeholder.svg"
@@ -56,7 +56,7 @@ const BuilderDashboard = () => {
       specialty: "Outdoor Construction",
       rating: 4.7,
       reviews: 89,
-      location: "San Jose, CA",
+      location: "Richmond Hill",
       hourlyRate: "$70-100",
       verified: false,
       avatar: "/placeholder.svg"
@@ -97,7 +97,7 @@ const BuilderDashboard = () => {
     {
       id: 1,
       title: "Kitchen Renovation",
-      location: "San Francisco, CA",
+      location: "Whitby",
       budget: "$25,000 - $35,000",
       status: "Active",
       bids: 8,
@@ -107,7 +107,7 @@ const BuilderDashboard = () => {
     {
       id: 2,
       title: "Bathroom Remodel",
-      location: "Oakland, CA",
+      location: "Maple",
       budget: "$15,000 - $20,000",
       status: "Reviewing Bids",
       bids: 12,
@@ -117,7 +117,7 @@ const BuilderDashboard = () => {
     {
       id: 3,
       title: "Deck Construction",
-      location: "San Jose, CA",
+      location: "Beaches",
       budget: "$8,000 - $12,000",
       status: "In Progress",
       bids: 0,
